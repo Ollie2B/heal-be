@@ -1,8 +1,9 @@
 const express = require('express')
 const cors = require('cors');
-const port = 4000
 const app = express()
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
+
+const port = process.env.PORT || 4000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -12,6 +13,6 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 });
 
-app.listen((process.env.PORT || 4000), () => {
+app.listen(port, () => {
   console.log(`App is listening!`)
 });
