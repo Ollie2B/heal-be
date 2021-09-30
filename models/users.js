@@ -21,12 +21,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     }
   }, {
-    timestamps:false,
+    timestamps: false,
     freezeTableName: true,
     tableName: 'users',
     classMethods: {}
   });
-  users.associate = function(models) {
+  users.associate = function (models) {
     // associations can be defined here
   };
   return users;

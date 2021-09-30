@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 const users = require('../models').users;
+
 module.exports = {
   /**
    * 
