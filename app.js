@@ -25,8 +25,11 @@ const options = {
         },
         servers: [
             {
-                url: "http://localhost:8000",
+                url: "http://localhost:5000",
             },
+            {
+                url: "https://heal-be.herokuapp.com/"
+            }
         ],
     },
     apis: ["./routes/*.js"],
