@@ -31,8 +31,8 @@ const options = {
     },
     apis: ["./routes/*.js"],
 };
-const specs = swaggerJsDoc(options);
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
+const swaggerDocs = swaggerJsDoc(options);
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 // Setup a default catch-all route that sends back a welcome message in JSON format.
 require('./routes')(app);
 app.get('*', (req, res) => res.status(200).send({
