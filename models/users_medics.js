@@ -7,11 +7,11 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    firstName: {
+    name: {
       allowNull: false,
       type: DataTypes.STRING
     },
-    lastName: {
+    surname: {
       allowNull: false,
       type: DataTypes.STRING
     },
@@ -20,8 +20,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     },
     mail: {
-      allowNull: true,
-      type: DataTypes.STRING
+      allowNull: false,
+      type: DataTypes.STRING,
+      unique: true
     },
     medicalRegistration: {
       allowNull: false,

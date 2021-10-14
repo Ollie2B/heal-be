@@ -8,17 +8,18 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      firstName: {
+      name: {
         type: Sequelize.STRING
       },
-      lastName: {
+      surname: {
         type: Sequelize.STRING
       },
       dni: {
         type: Sequelize.STRING
       },
       mail: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       medicalRegistration: {
         type: Sequelize.STRING
