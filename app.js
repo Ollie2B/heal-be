@@ -25,7 +25,7 @@ const options = {
         },
         servers: [
             {
-                url: "http://localhost:5000",
+                url: "http://localhost:8000",
             },
             {
                 url: "https://heal-be.herokuapp.com/"
@@ -39,9 +39,9 @@ app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 // Setup a default catch-all route that sends back a welcome message in JSON format.
 require('./routes')(app);
 app.get('*', (req, res) => res.status(200).send({
-    message: 'Welcome to the beginning of nothingness.',
+    message: 'Welcome to Heal API.',
 }));
-const port = parseInt(process.env.PORT, 10) || 5000;
+const port = parseInt(process.env.PORT, 10) || 8000;
 app.set('port', port);
 const server = http.createServer(app);
 server.listen(port);

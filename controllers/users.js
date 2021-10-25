@@ -10,31 +10,16 @@ module.exports = {
    * @param {*} res 
    */
   create(req, res) {
-    if (req.body.isMedic) {
-      return medics
-        .create({
-          name: req.body.name,
-          surname: req.body.surname,
-          dni: req.body.dni,
-          mail: req.body.mail,
-          medicalRegistration: req.body.medicalRegistration,
-          specialty: req.body.specialty,
-          password: req.body.password,
-        })
-        .then(medics => res.status(200).send(medics))
-        .catch(error => res.status(400).send(error))
-    } else {
-      return patients
-        .create({
-          name: req.body.name,
-          surname: req.body.surname,
-          dni: req.body.dni,
-          mail: req.body.mail,
-          password: req.body.password,
-        })
-        .then(patients => res.status(200).send(patients))
-        .catch(error => res.status(400).send(error))
-    }
+    return patients
+      .create({
+        name: req.body.name,
+        surname: req.body.surname,
+        dni: req.body.dni,
+        mail: req.body.mail,
+        password: req.body.password,
+      })
+      .then(patients => res.status(200).send(patients))
+      .catch(error => res.status(400).send(error))
   },
   /**
    * 
