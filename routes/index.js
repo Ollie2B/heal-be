@@ -1,5 +1,7 @@
 /* Controllers */
-const usersController = require('../controllers/').user;
+const userController = require('../controllers/').user;
+const loginController = require('../controllers/').login;
+const medicalHistoryController = require('../controllers/').medicalHistory;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
@@ -121,7 +123,7 @@ module.exports = (app) => {
    *       200:
    *         description: Creates a user for a patient or creates a user for a medic if the isMedic flag is true
    */
-  app.post('/users/create', usersController.create);
+  app.post('/users/create', userController.create);
 
   /**
    * @swagger
@@ -133,6 +135,11 @@ module.exports = (app) => {
    *       200:
    *         description: Returns all user data if the user and password combination exists
    */
-  app.post('/users/find', usersController.find);
+  app.get('/user/find', userController.find);
+
+  app.get('/login', loginController.login);
+
+  app.post('/medicalHistory/create', medicalHistoryController.create);
+  app.get('/medicalHistory/list', medicalHistoryController.list);
 
 };

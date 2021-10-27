@@ -1,4 +1,7 @@
 'use strict';
+
+const medicalHistory = require("./medicalHistory");
+
 module.exports = (sequelize, DataTypes) => {
   const patient = sequelize.define('patient', {
     weight: {
@@ -11,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   patient.associate = function (models) {
     // associations can be defined here
     patient.belongsTo(models.user);
+    patient.hasMany(models.medicalHistory);
   };
   return patient;
 };

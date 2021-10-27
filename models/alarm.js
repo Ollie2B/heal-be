@@ -2,12 +2,10 @@
 module.exports = (sequelize, DataTypes) => {
   const alarm = sequelize.define('alarm', {
     tag: {
-      allowNull: false,
       type: DataTypes.STRING
     },
     date: {
-      allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.STRING
     },
   });
   alarm.associate = function (models) {

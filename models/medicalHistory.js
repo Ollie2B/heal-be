@@ -2,12 +2,10 @@
 module.exports = (sequelize, DataTypes) => {
   const medicalHistory = sequelize.define('medicalHistory', {
     detail: {
-      allowNull: false,
       type: DataTypes.STRING
     },
     date: {
-      allowNull: false,
-      type: DataTypes.DATEONLY
+      type: DataTypes.STRING
     },
   });
   medicalHistory.associate = function (models) {
