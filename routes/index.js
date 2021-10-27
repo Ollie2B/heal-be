@@ -1,9 +1,9 @@
 /* Controllers */
-const usersController = require('../controllers').users;
+const usersController = require('../controllers/').user;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
-    message: 'Check /api-docs for a list of available endpoints',
+    message: 'Heal api is working as intended',
   }));
 
   /**
@@ -121,7 +121,7 @@ module.exports = (app) => {
    *       200:
    *         description: Creates a user for a patient or creates a user for a medic if the isMedic flag is true
    */
-  app.post('/api/users/create', usersController.create);
+  app.post('/users/create', usersController.create);
 
   /**
    * @swagger
@@ -133,6 +133,6 @@ module.exports = (app) => {
    *       200:
    *         description: Returns all user data if the user and password combination exists
    */
-  app.post('/api/users/find', usersController.find);
+  app.post('/users/find', usersController.find);
 
 };
