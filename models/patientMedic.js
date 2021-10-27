@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const patientMedic = sequelize.define('patientMedic', {
-    edit_permission: {
+    editPermission: {
       allowNull: true,
       defaultValue: 0,
       type: DataTypes.BOOLEAN

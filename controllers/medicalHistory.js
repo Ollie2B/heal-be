@@ -38,7 +38,7 @@ module.exports = {
           }
         })
       })
-      .then(user => res.status(200).send(user))
+      .then(medicalHistory => res.status(200).send(medicalHistory))
       .catch(error => res.status(400).send(error))
   },
 };

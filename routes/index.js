@@ -2,6 +2,7 @@
 const userController = require('../controllers/').user;
 const loginController = require('../controllers/').login;
 const medicalHistoryController = require('../controllers/').medicalHistory;
+const patientMedicController = require('../controllers/').patientMedic;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
@@ -142,4 +143,6 @@ module.exports = (app) => {
   app.post('/medicalHistory/create', medicalHistoryController.create);
   app.get('/medicalHistory/list', medicalHistoryController.list);
 
+  app.post('/patientMedic/create', patientMedicController.create);
+  app.get('/patientMedic/list', patientMedicController.list);
 };

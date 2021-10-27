@@ -3,7 +3,7 @@ const Op = Sequelize.Op;
 const medic = require('../models').medic;
 const patient = require('../models').patient;
 const user = require('../models').user;
-const medicalHistory = require('../models').medicalHistory;
+const patientMedic = require('../models').patientMedic;
 
 module.exports = {
   create(req, res) {
@@ -15,30 +15,33 @@ module.exports = {
         return user.findOne({ where: { email: req.body.medicEmail }, include: medic })
       }).then(data => {
         foundMedic = data;
-        return medicalHistory.create({
-          detail: req.body.detail,
-          date: req.body.date,
+        return patientMedic.create({
+          editPermission: req.body.editPermission,
           patientId: foundPatient.patient.get('id'),
           medicId: foundMedic.medic.get('id')
         }
         )
       })
-      .then(medicalHistory => res.status(200).send(medicalHistory))
+      .then(patientMedic => res.status(200).send(patientMedic))
       .catch(error => res.status(400).send(error))
   },
 
   list(req, res) {
     let foundPatient;
-    return user.findOne({ where: { email: req.body.email }, include: patient })
+    return user.findOne({ where: { email: req.body.email }, include: [patient] })
       .then(data => {
         foundPatient = data;
-        return medicalHistory.findAll({
+        return patient.findOne({
           where: {
-            patientId: foundPatient.patient.get('id')
-          }
+            id: foundPatient.patient.get('id')
+          }, include: [{
+            model: medic,
+            include: [user]
+          }]
+
         })
       })
-      .then(user => res.status(200).send(user))
+      .then(patientMedic => res.status(200).send(patientMedic))
       .catch(error => res.status(400).send(error))
   },
 };
