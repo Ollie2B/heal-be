@@ -27,21 +27,11 @@ module.exports = {
   },
 
   list(req, res) {
-    let foundPatient;
-    return user.findOne({ where: { email: req.body.email }, include: [patient] })
-      .then(data => {
-        foundPatient = data;
-        return patient.findOne({
-          where: {
-            id: foundPatient.patient.get('id')
-          }, include: [{
-            model: medic,
-            include: [user]
-          }]
-
-        })
-      })
-      .then(patientMedic => res.status(200).send(patientMedic))
+    return user.findOne({
+      where: { email: req.body.email },
+      include: [{ model: patient, include: [{ model: medic, include: [user] }] }]
+    })
+      .then(user => res.status(200).send(user))
       .catch(error => res.status(400).send(error))
   },
 };
