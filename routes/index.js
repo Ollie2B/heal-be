@@ -124,7 +124,7 @@ module.exports = (app) => {
    *       200:
    *         description: Creates a user for a patient or creates a user for a medic if the isMedic flag is true
    */
-  app.post('/users/create', userController.create);
+  app.post('/user/create', userController.create);
 
   /**
    * @swagger
