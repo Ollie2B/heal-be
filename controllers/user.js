@@ -48,7 +48,8 @@ module.exports = {
     return user.findOne({
       where: {
         email: req.body.email,
-      }
+      },
+      include: [patient, medic]
     })
       .then(user => res.status(200).send(user))
       .catch(error => res.status(400).send(error))
