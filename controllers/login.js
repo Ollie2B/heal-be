@@ -1,4 +1,7 @@
 const user = require('../models').user;
+const medic = require('../models').medic;
+const patient = require('../models').patient;
+const userType = require('../models').userType;
 
 module.exports = {
   login(req, res) {
