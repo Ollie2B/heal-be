@@ -136,13 +136,13 @@ module.exports = (app) => {
    *       200:
    *         description: Returns all user data if the user and password combination exists
    */
-  app.get('/user/find', userController.find);
+  app.post('/user/find', userController.find);
 
-  app.get('/login', loginController.login);
+  app.post('/login', loginController.login);
 
   app.post('/medicalHistory/create', medicalHistoryController.create);
-  app.get('/medicalHistory/list', medicalHistoryController.list);
+  app.post('/medicalHistory/list', medicalHistoryController.list);
 
   app.post('/patientMedic/create', patientMedicController.create);
-  app.get('/patientMedic/list', patientMedicController.list);
+  app.post('/patientMedic/list', patientMedicController.list);
 };
