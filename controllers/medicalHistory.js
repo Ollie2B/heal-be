@@ -34,8 +34,9 @@ module.exports = {
         foundPatient = data;
         return medicalHistory.findAll({
           where: {
-            patientId: foundPatient.patient.get('id')
-          }
+            patientId: foundPatient.patient.get('id'),
+          },
+          include: [{ model: medic, include: [user] }]
         })
       })
       .then(medicalHistory => res.status(200).send(medicalHistory))
