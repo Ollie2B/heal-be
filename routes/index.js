@@ -145,4 +145,5 @@ module.exports = (app) => {
 
   app.post('/patientMedic/create', patientMedicController.create);
   app.post('/patientMedic/list', patientMedicController.list);
+  app.post('/patientMedic/delete', patientMedicController.delete);
 };

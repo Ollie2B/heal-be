@@ -29,9 +29,31 @@ module.exports = {
   list(req, res) {
     return user.findOne({
       where: { email: req.body.email },
-      include: [{ model: patient, include: [{ model: medic, include: [user] }] }]
+      include: [{ model: patient, include: [{ model: medic, include: [user] }] }, { model: medic, include: [{ model: patient, include: [user] }] }]
     })
       .then(user => res.status(200).send(user))
       .catch(error => res.status(400).send(error))
   },
+
+  delete(req, res) {
+    let foundPatient;
+    let foundMedic;
+    return user.findOne({ where: { email: req.body.patientEmail }, include: patient })
+      .then(data => {
+        foundPatient = data;
+        return user.findOne({ where: { email: req.body.medicEmail }, include: medic })
+      }).then(data => {
+        foundMedic = data;
+        return patientMedic.destroy({
+          where: {
+            patientId: foundPatient.patient.get('id'),
+            medicId: foundMedic.medic.get('id')
+          }
+        }
+        )
+      })
+      .then(patientMedic => res.status(200).send(patientMedic))
+      .catch(error => res.status(400).send(error))
+  },
+
 };
