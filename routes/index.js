@@ -4,6 +4,7 @@ const loginController = require('../controllers/').login;
 const medicalHistoryController = require('../controllers/').medicalHistory;
 const patientMedicController = require('../controllers/').patientMedic;
 const prescriptionController = require('../controllers/').prescription;
+const appointmentController = require('../controllers/').appointment;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
@@ -146,6 +147,9 @@ module.exports = (app) => {
 
   app.post('/prescription/create', prescriptionController.create);
   app.post('/prescription/list', prescriptionController.list);
+
+  app.post('/appointment/create', appointmentController.create);
+  app.post('/appointment/list', appointmentController.list);
 
   app.post('/patientMedic/create', patientMedicController.create);
   app.post('/patientMedic/list', patientMedicController.list);
