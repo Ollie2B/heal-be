@@ -150,6 +150,7 @@ module.exports = (app) => {
 
   app.post('/appointment/create', appointmentController.create);
   app.post('/appointment/list', appointmentController.list);
+  app.post('/appointment/delete', appointmentController.delete);
 
   app.post('/patientMedic/create', patientMedicController.create);
   app.post('/patientMedic/list', patientMedicController.list);

@@ -43,4 +43,14 @@ module.exports = {
       .then(appointment => res.status(200).send(appointment))
       .catch(error => res.status(400).send(error))
   },
+
+  delete(req, res) {
+    return appointment.destroy({
+      where: {
+        id: req.body.id
+      }
+    })
+      .then(destroyResult => destroyResult === 0 ? res.status(404).send("appointment not found") : res.status(200).send("appointment deleted"))
+      .catch(error => res.status(400).send(error))
+  },
 };
