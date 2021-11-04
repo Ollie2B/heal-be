@@ -52,7 +52,7 @@ module.exports = {
         }
         )
       })
-      .then(patientMedic => res.status(200).send(patientMedic))
+      .then(destroyResult => destroyResult === 0 ? res.status(404).send("patientMedic not found") : res.status(200).send("patientMedic deleted"))
       .catch(error => res.status(400).send(error))
   },
 
