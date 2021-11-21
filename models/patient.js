@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     patient.hasMany(models.medicalHistory);
     patient.hasMany(models.prescription);
     patient.hasMany(models.appointment);
+    patient.hasMany(models.medicalStudy);
     patient.belongsToMany(models.medic, { through: models.patientMedic });
   };
   return patient;

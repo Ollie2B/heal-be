@@ -4,6 +4,8 @@ const medicalHistory = require('./medicalHistory');
 const patientMedic = require('./patientMedic');
 const prescription = require('./prescription');
 const appointment = require('./appointment');
+const upload = require('./upload');
+const medicalStudy = require('./medicalStudy');
 
 module.exports = {
   user,
@@ -11,5 +13,7 @@ module.exports = {
   medicalHistory,
   patientMedic,
   prescription,
-  appointment
+  appointment,
+  upload,
+  medicalStudy
 }
