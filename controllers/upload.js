@@ -4,6 +4,7 @@ const patient = require('../models').patient;
 const user = require('../models').user;
 
 const uploadFiles = async (req, res) => {
+  console.log(req)
   try {
     console.log(req.file);
 
