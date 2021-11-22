@@ -10,6 +10,12 @@ module.exports = (sequelize, DataTypes) => {
     data: {
       type: DataTypes.BLOB('long'),
     },
+    date: {
+      type: DataTypes.STRING,
+    },
+    description: {
+      type: DataTypes.STRING,
+    }
   });
   medicalStudy.associate = function (models) {
     // associations can be defined here

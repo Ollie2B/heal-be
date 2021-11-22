@@ -21,7 +21,9 @@ const uploadFiles = async (req, res) => {
           data: fs.readFileSync(
             './uploads/' + req.file.filename
           ),
-          patientId: foundPatient.patient.get('id')
+          patientId: foundPatient.patient.get('id'),
+          date: req.body.date,
+          description: req.body.description
         })
       }).then((medicalStudy) => {
         fs.writeFileSync(
